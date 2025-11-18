@@ -9,7 +9,9 @@
   "devDependencies": {
     "browserify": "^13.0.0"
   },
-  "scripts": {
-    "build": "browserify -d client/app.js -o public/js/bundle.js"
-  }
+"scripts": {
+  "start": "node server.js",
+  "build": "browserify -d client/app.js -o public/js/bundle.js"
+}
+
 }
