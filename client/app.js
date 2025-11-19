@@ -17,7 +17,7 @@ let run = function (state) {
 const tileColors = ["#f4a460", "#666666", "#003200", "#006400", "#ffff00", "#660000", "#0000ff"];
 const playerColors = ["#ff0000", "#00bcff", "#ffbc00", "#008000"];
 
-const server = "ws://" + window.location.hostname + ":8081";
+const server = "wss://" + window.location.hostname + ":8081";
 
 class Lobby {
 	constructor(ctx) {
@@ -743,8 +743,11 @@ canvas.height = Hex.height;
 
 canvas.addEventListener("mousemove", function (event) {
 	let rect = canvas.getBoundingClientRect();
-	let mouseX = currentState.mouseX = event.clientX - rect.left;
-	let mouseY = currentState.mouseY = event.clientY - rect.top;
+	if ("mouseX" in currentState) {
+		currentState.mouseX = event.clientX - rect.left;
+		currentState.mouseY = event.clientY - rect.top;
+	}
+
 
 	currentState.tile = Hex.pixelsToTile(mouseX, mouseY);
 	currentState.vertex = Hex.pixelsToVertex(mouseX, mouseY);
