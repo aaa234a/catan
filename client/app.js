@@ -743,12 +743,14 @@ canvas.height = Hex.height;
 
 canvas.addEventListener("mousemove", function (event) {
 	let rect = canvas.getBoundingClientRect();
-	let mouseX = currentState.mouseX = event.clientX - rect.left;
-	let mouseY = currentState.mouseY = event.clientY - rect.top;
+	if ("mouseX" in currentState) {
+		currentState.mouseX = event.clientX - rect.left;
+		currentState.mouseY = event.clientY - rect.top;
+	}
 
-	currentState.tile = Hex.pixelsToTile(mouseX, mouseY);
-	currentState.vertex = Hex.pixelsToVertex(mouseX, mouseY);
-	currentState.edge = Hex.pixelsToEdge(mouseX, mouseY);
+	currentState.tile = Hex.pixelsToTile(currentState.mouseX, currentState.mouseY);
+	currentState.vertex = Hex.pixelsToVertex(currentState.mouseX, currentState.mouseY);
+	currentState.edge = Hex.pixelsToEdge(currentState.mouseX, currentState.mouseY);
 });
 
 canvas.addEventListener("click", function (event) {
