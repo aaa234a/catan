@@ -17,7 +17,7 @@ let run = function (state) {
 const tileColors = ["#f4a460", "#666666", "#003200", "#006400", "#ffff00", "#660000", "#0000ff"];
 const playerColors = ["#ff0000", "#00bcff", "#ffbc00", "#008000"];
 
-const server = "ws://" + window.location.hostname + ":8081";
+const server = "wss://" + window.location.hostname + ":8081";
 
 class Lobby {
 	constructor(ctx) {
